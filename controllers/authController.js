@@ -39,12 +39,7 @@ export async function login(req, res) {
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
         );
-
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: false, // secure only in production
-            sameSite: "none" // required for cross-site cookies
-        });
+        res.json(token);
 
 
         return res.json({ success: true, message: "Login successful", token });

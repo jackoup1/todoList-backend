@@ -38,10 +38,7 @@ export async function login(req, res) {
             { username: user.username, id: user._id.toString() },
             process.env.JWT_SECRET,
             { expiresIn: "1h" }
-        );
-        res.json(token);
-
-
+        )
         return res.json({ success: true, message: "Login successful", token });
     } catch (err) {
         console.error(err);

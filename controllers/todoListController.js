@@ -5,15 +5,10 @@ import taskModel from "../models/taskModel.js";
 // ------------------------------
 export async function getAllTasks(req, res) {
   try {
-    console.log("Getting tasks");
     const userId = req.user.id;
     const todos = await taskModel.find({ authorId: userId });
 
-    res.status(200).json({
-      success: true,
-      count: todos.length,
-      todos,
-    });
+    res.status(200).json(todos);
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: "Error fetching todos" });

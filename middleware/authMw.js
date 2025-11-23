@@ -5,7 +5,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "Abbasa";
 
 export function authMiddleware(req, res, next) {
   // Token can come from cookies or Authorization header
-  const token = req.cookies?.token || req.headers["authorization"]?.split(" ")[1];
+  const token = req.headers["authorization"]?.split(" ")[1];
 
   if (!token) {
     console.log("trying to acces without token");
